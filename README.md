@@ -3,7 +3,7 @@ komputer maschine
 
 komputer maschine is a shell script that gets your machine ready for development.
 
-This script can be ran once or as many times as you'd like. It installs everything that macOS needs to get to work.
+This script can be run once or as many times as you'd like. It installs everything that macOS needs to get to work.
 
 ## Requirements
 
@@ -13,7 +13,7 @@ This script can be ran once or as many times as you'd like. It installs everythi
 ## Install
 
 ```sh
-curl --remote-name https://raw.githubusercontent.com/laurendorman/komputer-maschine/master/macos
+curl --remote-name https://raw.githubusercontent.com/heldinz/komputer-maschine/master/macos
 sh macos 2>&1 | tee ~/komputer-maschine.log
 ```
 
@@ -24,43 +24,43 @@ sh macos 2>&1 | tee ~/komputer-maschine.log
 * [XCode Command Line Tools](https://developer.apple.com/xcode/downloads/) for developer essentials.
 * [Homebrew](http://brew.sh/) for managing operating system libraries.
 
-**Unix tools:**
+**Tools:**
 
 * [git](https://git-scm.com/) for version control.
-* [tmux](http://tmux.github.io/) for saving project state and switching between projects.
-* [zsh](http://www.zsh.org/) as your shell.
+* [Vim](https://www.vim.org/) for a text editor in your console.
+* [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to manage Heroku apps from the terminal.
 
-**Image tools:**
-
-* [ImageMagick](http://www.imagemagick.org/) for converting, cropping, resizing and renaming images in the command line interface.
 
 **Programming languages and configuration:**
 
-* [Bundler](http://bundler.io/) for managing Ruby libraries.
 * [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.org/) for running applications and installing JavaScript packages.
-* [Rbenv](https://github.com/sstephenson/rbenv) for managing versions of Ruby.
-* [Ruby Build](https://github.com/sstephenson/ruby-build) for installing Rubies.
-* [Ruby](https://www.ruby-lang.org/en/) stable for writing general-purpose code.
+* [Python 3](https://www.python.org/) for an up-to-date Python install.
 
 **Applications:**
 
+* [1Password](https://1password.com/) as a secure password manager.
 * [Alfred](https://www.alfredapp.com/) for increased productivity and efficiency with macOS.
-* [Caffeine](http://lightheadsw.com/caffeine/) to keep your Mac awake.
-* [Google Chrome](https://www.google.com/chrome/) for browsing the web.
-* [Firefox](https://www.mozilla.org/en-US/firefox/new/) for browsing the web also, but mostly for testing. :)
-* [iTerm2](https://www.iterm2.com/) for a better terminal.
-* [VS Code](https://code.visualstudio.com/) as a text editor.
-* [The Unarchiver](http://unarchiver.c3.cx/unarchiver) for extracting archives that are not supported by macOS out of the box.
+* [Atom](https://atom.io/) as a code editor.
+* [Docker](https://www.docker.com/) for building, shipping and running applications.
+* [Dropbox](https://www.dropbox.com/) for storing and sharing files.
+* [Firefox](https://www.mozilla.org/de/firefox/developer/) for browsing the web and testing.
+* [Google Chrome](https://www.google.com/chrome/) for browsing the web and testing.
+* [Hyper](https://hyper.is/) for a better terminal.
+* [Notion](https://notion.so/) to share knowledge with colleagues.
+* [Remember the Milk](https://www.rememberthemilk.com/) as a to-do list.
 * [Slack](https://slack.com/) for more team communication and less email.
-* [Docker](https://www.docker.com/) for buliding, shipping and running applications.
-* [Spotify](https://www.spotify.com/us/) for music.
+* [Sourcetree](https://www.sourcetreeapp.com/) because sometimes Git needs a GUI.
+* [Spotify](https://www.spotify.com/) for music.
+* [Sublime Text](https://www.sublimetext.com/) as a scratchpad.
+* [The Fuck](https://github.com/nvbn/thefuck) to correct your previous console command.
+* [The Unarchiver](http://unarchiver.c3.cx/unarchiver) for extracting archives that are not supported by macOS out of the box.
 
 ## Debugging
 
 The log of your script, successful or not, will be saved to `~/komputer-maschine.log`.
 
 Read through it to see if you can debug the issue yourself.
-If not, report where the script failed into a [new GitHub Issue](https://github.com/laurendorman/komputer-maschine/issues/new).
+If not, report where the script failed into a [new GitHub Issue](https://github.com/heldinz/komputer-maschine/issues/new).
 
 ## Known Issues
 
@@ -68,10 +68,8 @@ Cask does not recognize applications installed outside of Homebrew Cask – in t
 
 ## License
 
-komputer maschine is © 2016-Present by Lauren Dorman and is protected under the [MIT License].
-
-[MIT License]: LICENSE
+© 2020 Alice Rose and licensed under the [MIT License](LICENSE).
 
 ## Credits and inspiration
 
-Inspired by thoughtbot's [laptop](https://github.com/thoughtbot/laptop/) and Andrew Taylor's article on [Pantheon](https://pantheon.io/blog/dev-setup-using-homebrew-os-x).
+Forked from Lauren Dorman's [komputer maschine](https://github.com/laurendorman/komputer-maschine).

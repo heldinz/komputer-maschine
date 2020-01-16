@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# komputer maschine gets your macOS machine up and running quickly.
-# No more second guessing if you've installed the tools you need.
+# Forked from https://github.com/laurendorman/komputer-maschine
 
 komputer_echo() {
   local fmt="$1"; shift
@@ -9,17 +8,17 @@ komputer_echo() {
   printf "\n$fmt\n" "$@"
 }
 
-append_to_zshrc() {
-  local text="$1" zshrc
+append_to_bashrc() {
+  local text="$1" bashrc
   local skip_new_line="${2:-0}"
 
-  zshrc="$HOME/.zshrc"
+  bashrc="$HOME/.bashrc"
 
-  if ! grep -Fqs "$text" "$zshrc"; then
+  if ! grep -Fqs "$text" "$bashrc"; then
     if [ "$skip_new_line" -eq 1 ]; then
-      printf "%s\n" "$text" >> "$zshrc"
+      printf "%s\n" "$text" >> "$bashrc"
     else
-      printf "\n%s\n" "$text" >> "$zshrc"
+      printf "\n%s\n" "$text" >> "$bashrc"
     fi
   fi
 }
@@ -33,7 +32,7 @@ if [ ! -d "$HOME/.bin/" ]; then
   mkdir "$HOME/.bin"
 fi
 
-append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
+append_to_bashrc 'export PATH="$HOME/.bin:$PATH"'
 
 if [ ! -d "/usr/local" ]; then
   sudo mkdir /usr/local
@@ -51,22 +50,6 @@ else
   sudo chown -R "$LOGNAME:admin" "$HOMEBREW_PREFIX"
 fi
 
-case "$SHELL" in
-  */zsh) : ;;
-  *)
-    komputer_echo "Changing your shell to zsh..."
-      sudo chsh -s "$(which zsh)"
-    ;;
-esac
-
-gem_install_or_update() {
-  if gem list "$1" --installed > /dev/null; then
-    gem update "$@"
-  else
-    gem install "$@"
-    rbenv rehash
-  fi
-}
 
 # Install XCode
 if type xcode-select >&- && xpath=$( xcode-select --print-path ) &&
@@ -83,7 +66,7 @@ if ! command -v brew >/dev/null; then
       'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 
     # shellcheck disable=SC2016
-    append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
+    append_to_bashrc 'export PATH="/usr/local/bin:$PATH"' 1
 
     export PATH="/usr/local/bin:$PATH"
   else
@@ -94,28 +77,23 @@ fi
 komputer_echo "Installing services..."
 brew bundle --file=- <<EOF
 tap "homebrew/services"
-tap "caskroom/cask"
+tap "homebrew/cask"
+tap "heroku/brew"
 
 # Unix
 brew "git"
-brew "reattach-to-user-namespace"
-brew "tmux"
 brew "vim"
-brew "zsh"
-
-# Image manipulation
-brew "imagemagick"
 
 # Programming languages
-brew "rbenv"
-brew "ruby-build"
+brew "python3"
 
 # Tools
 brew "npm"
+brew "heroku"
 EOF
 
 # Check for Node
-if test ! $(brew list | grep node); then
+if test ! $(brew list | grep "^node$"); then
   komputer_echo 'Installing Node...'
   brew install node
 else
@@ -123,17 +101,22 @@ else
 fi
 
 applications=(
-  alfred
-  caffeine
   1password
-  google-chrome
-  firefox
-  iterm2
-  visual-studio-code
-  the-unarchiver
-  slack
+  alfred
+  atom
   docker
+  dropbox
+  firefox
+  google-chrome
+  hyper
+  notion
+  remember-the-milk
+  slack
+  sourcetree
   spotify
+  sublime-text
+  thefuck
+  the-unarchiver
 )
 
 komputer_echo "Installing applications..."
@@ -154,27 +137,5 @@ done
 # Clean up Homebrew files
 komputer_echo "Cleaning up files..."
 brew cleanup
-
-komputer_echo "Configuring Ruby..."
-
-find_latest_ruby() {
-  rbenv install -l | grep -v - | tail -1 | sed -e 's/^ *//'
-}
-
-ruby_version="$(find_latest_ruby)"
-
-append_to_zshrc 'eval "$(rbenv init - --no-rehash)"' 1
-eval "$(rbenv init -)"
-
-if ! rbenv versions | grep -Fq "$ruby_version"; then
-  RUBY_CONFIGURE_OPTS=--with-openssl-dir=/usr/local/opt/openssl rbenv install -s "$ruby_version";
-fi
-
-rbenv global "$ruby_version"
-rbenv shell "$ruby_version"
-sudo gem update --system
-gem_install_or_update 'bundler'
-number_of_cores=$(sysctl -n hw.ncpu)
-bundle config --global jobs $((number_of_cores - 1))
 
 komputer_echo "Congratulations! Your komputer maschine is ready to go."
