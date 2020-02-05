@@ -78,6 +78,7 @@ komputer_echo "Installing services..."
 brew bundle --file=- <<EOF
 tap "homebrew/services"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "heroku/brew"
 
 # Unix
@@ -103,15 +104,17 @@ fi
 applications=(
   1password
   alfred
-  atom
+  code
   docker
   dropbox
+  figma
   firefox
   google-chrome
   hyper
   notion
   remember-the-milk
   slack
+  sonos
   sourcetree
   spotify
   sublime-text
