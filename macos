@@ -107,6 +107,7 @@ applications=(
   code
   docker
   dropbox
+  expressvpn
   figma
   firefox
   google-chrome
