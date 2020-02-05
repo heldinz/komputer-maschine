@@ -40,20 +40,23 @@ sh macos 2>&1 | tee ~/komputer-maschine.log
 
 * [1Password](https://1password.com/) as a secure password manager.
 * [Alfred](https://www.alfredapp.com/) for increased productivity and efficiency with macOS.
-* [Atom](https://atom.io/) as a code editor.
 * [Docker](https://www.docker.com/) for building, shipping and running applications.
 * [Dropbox](https://www.dropbox.com/) for storing and sharing files.
+* [ExpressVPN](https://www.expressvpn.com/) to browse the web safely.
+* [Figma](https://www.figma.com/) for editing and viewing designs.
 * [Firefox](https://www.mozilla.org/de/firefox/developer/) for browsing the web and testing.
 * [Google Chrome](https://www.google.com/chrome/) for browsing the web and testing.
 * [Hyper](https://hyper.is/) for a better terminal.
 * [Notion](https://notion.so/) to share knowledge with colleagues.
 * [Remember the Milk](https://www.rememberthemilk.com/) as a to-do list.
 * [Slack](https://slack.com/) for more team communication and less email.
+* [Sonos](https://www.sonos.com/) to play music over a Sonos system.
 * [Sourcetree](https://www.sourcetreeapp.com/) because sometimes Git needs a GUI.
 * [Spotify](https://www.spotify.com/) for music.
 * [Sublime Text](https://www.sublimetext.com/) as a scratchpad.
 * [The Fuck](https://github.com/nvbn/thefuck) to correct your previous console command.
 * [The Unarchiver](http://unarchiver.c3.cx/unarchiver) for extracting archives that are not supported by macOS out of the box.
+* [Visual Studio Code](https://code.visualstudio.com/) as a code editor.
 
 ## Debugging
 
